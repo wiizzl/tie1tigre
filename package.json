@@ -1,7 +1,7 @@
 {
   "name": "tie1tigre",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "jotai": "^2.15.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "unocss": "^66.5.4"
   },
   "devDependencies": {
     "@types/node": "^24.6.0",

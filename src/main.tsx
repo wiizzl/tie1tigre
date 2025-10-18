@@ -1,9 +1,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
+import "uno.css";
+import Game from "./components/Game";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <h1>Hello, World!</h1>
+    <div className="fixed inset-0">
+      <h1 className="top-2 left-2">tié1tigre.</h1>
+      <Game />
+    </div>
   </StrictMode>
 );
