@@ -213,17 +213,15 @@ export default function Game() {
       )}
 
       {/* Tiger (player) */}
-      <div ref={tigerRef} className="absolute w-100px left-5" style={{ bottom: `${tigerY}px` }}>
-        <img src="/tigre.png" alt="Le tigre" />
+      <div ref={tigerRef} className="absolute left-5" style={{ bottom: `${tigerY}px` }}>
+        <img src={`/tigre/${Math.floor((currentScore / 5) % 4) + 1}.png`} alt="Le tigre" width={100} />
       </div>
 
       {/* Obstacles */}
       {obstacles.map((obstacle) => (
-        <div
-          key={obstacle.id}
-          className="absolute bottom-0 w-20px h-40px bg-red-500"
-          style={{ left: `${obstacle.x}px` }}
-        />
+        <div key={obstacle.id} className="absolute bottom-0 size-60px" style={{ left: `${obstacle.x}px` }}>
+          <img src="/psg.png" alt="Obstacle" />
+        </div>
       ))}
     </Land>
   );
