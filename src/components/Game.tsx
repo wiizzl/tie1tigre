@@ -1,6 +1,6 @@
-import { useEffect, useState, useRef } from "react";
 import { useAtom } from "jotai";
-import { highScoreAtom, currentScoreAtom, isGameOverAtom } from "../store/game";
+import { useEffect, useRef, useState } from "react";
+import { currentScoreAtom, highScoreAtom, isGameOverAtom } from "../store/game";
 
 interface Obstacle {
   id: number;
@@ -12,7 +12,7 @@ const Land: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <div>
       <div className="absolute bottom-120px inset-x-0">{children}</div>
       <div className="absolute bottom-0 inset-x-0 h-120px bg-black/50" />
-      <img src="/wallpaper.jpg" alt="Image de fond" />
+      <img src="/wallpaper.jpg" alt="Image de fond" className="w-full" />
     </div>
   );
 };
@@ -161,9 +161,7 @@ export default function Game() {
 
     const moveInterval = setInterval(() => {
       setObstacles((prev) => {
-        const updatedObstacles = prev
-          .map((obs) => ({ ...obs, x: obs.x - gameSpeed }))
-          .filter((obs) => obs.x > -100); // remove obstacles off-screen
+        const updatedObstacles = prev.map((obs) => ({ ...obs, x: obs.x - gameSpeed })).filter((obs) => obs.x > -100); // remove obstacles off-screen
 
         // Check collisions using ref to avoid effect re-runs
         for (const obstacle of updatedObstacles) {
@@ -215,11 +213,7 @@ export default function Game() {
       )}
 
       {/* Tiger (player) */}
-      <div
-        ref={tigerRef}
-        className="absolute w-100px left-5"
-        style={{ bottom: `${tigerY}px` }}
-      >
+      <div ref={tigerRef} className="absolute w-100px left-5" style={{ bottom: `${tigerY}px` }}>
         <img src="/tigre.png" alt="Le tigre" />
       </div>
 
