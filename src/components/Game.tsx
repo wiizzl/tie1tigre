@@ -19,6 +19,28 @@ export default function Game() {
   const [nextId, setNextId] = useState(0);
   const [gameSpeed] = useState(5); // pixels per frame
 
+  const [isJumping, setIsJumping] = useState(false);
+  const [canJump, setCanJump] = useState(true);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === " " && !isJumping && canJump) {
+        setIsJumping(true);
+        setCanJump(false);
+
+        setTimeout(() => {
+          setIsJumping(false);
+          setTimeout(() => {
+            setCanJump(true);
+          }, 300);
+        }, 500);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isJumping, canJump]);
+
   useEffect(() => {
     const spawnInterval = setInterval(() => {
       setObstacles((prev) => [...prev, { id: nextId, x: window.innerWidth }]);
@@ -31,10 +53,7 @@ export default function Game() {
   useEffect(() => {
     const moveInterval = setInterval(() => {
       setObstacles(
-        (prev) =>
-          prev
-            .map((obs) => ({ ...obs, x: obs.x - gameSpeed }))
-            .filter((obs) => obs.x > -100) // remove obstacles off-screen
+        (prev) => prev.map((obs) => ({ ...obs, x: obs.x - gameSpeed })).filter((obs) => obs.x > -100) // remove obstacles off-screen
       );
     }, 16);
 
@@ -43,7 +62,11 @@ export default function Game() {
 
   return (
     <Land>
-      <div className="absolute border size-100px bottom-0 left-5">
+      <div
+        className={`absolute border size-100px left-5 transition-all duration-500 ${
+          isJumping ? "bottom-200px" : "bottom-0"
+        }`}
+      >
         <img src="/tigre.png" alt="Le tigre" width={150} height={100} />
       </div>
 
