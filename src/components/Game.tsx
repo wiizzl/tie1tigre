@@ -79,6 +79,7 @@ export default function Game() {
 
       if (event.key === " " && !isJumping && canJump && !isGameOver) {
         setIsJumping(true);
+        new Audio("/audio/jump.mp3").play();
         setCanJump(false);
 
         // Animate jump with smooth interpolation
@@ -168,7 +169,10 @@ export default function Game() {
           if (checkCollision(obstacle.x, tigerYRef.current)) {
             setIsGameOver(true);
             if (currentScore > highScore) {
+              new Audio("/audio/win.mp3").play();
               setHighScore(currentScore);
+            } else {
+              new Audio("/audio/lose.mp3").play();
             }
             return prev; // Stop updating obstacles
           }
