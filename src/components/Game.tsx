@@ -9,7 +9,8 @@ const Land: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div>
       <div className="absolute bottom-120px inset-x-0">{children}</div>
-      <div className="absolute bottom-0 inset-x-0 h-120px bg-black" />
+      <div className="absolute bottom-0 inset-x-0 h-120px bg-black/50" />
+      <img src="/wallpaper.jpg" alt="Image de fond" />
     </div>
   );
 };
