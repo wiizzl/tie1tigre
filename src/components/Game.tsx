@@ -169,7 +169,11 @@ export default function Game() {
           if (checkCollision(obstacle.x, tigerYRef.current)) {
             setIsGameOver(true);
             if (currentScore > highScore) {
-              new Audio("/audio/win.mp3").play();
+              if (Math.random() < 0.5) {
+                new Audio("/audio/win2.mp3").play();
+              } else {
+                new Audio("/audio/win.mp3").play();
+              }
               setHighScore(currentScore);
             } else {
               new Audio("/audio/lose.mp3").play();
