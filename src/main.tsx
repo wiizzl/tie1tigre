@@ -7,7 +7,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <div className="fixed inset-0">
       <div className="absolute top-4 left-6">
-        <h1 className="text-2xl font-bold">tié1tigre.</h1>
+        <h1 className="text-2xl font-bold text-white">tié1tigre.</h1>
       </div>
       <Game />
     </div>
