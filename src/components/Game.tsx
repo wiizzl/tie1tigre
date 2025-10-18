@@ -53,7 +53,10 @@ export default function Game() {
   useEffect(() => {
     const moveInterval = setInterval(() => {
       setObstacles(
-        (prev) => prev.map((obs) => ({ ...obs, x: obs.x - gameSpeed })).filter((obs) => obs.x > -100) // remove obstacles off-screen
+        (prev) =>
+          prev
+            .map((obs) => ({ ...obs, x: obs.x - gameSpeed }))
+            .filter((obs) => obs.x > -100) // remove obstacles off-screen
       );
     }, 16);
 
@@ -63,7 +66,9 @@ export default function Game() {
   return (
     <Land>
       <div
-        className={`absolute size-120px left-5 transition-all duration-500 ${isJumping ? "bottom-200px" : "bottom-0"}`}
+        className={`absolute w-100px left-5 transition-all duration-500 ${
+          isJumping ? "bottom-200px" : "bottom-0"
+        }`}
       >
         <img src="/tigre.png" alt="Le tigre" />
       </div>
