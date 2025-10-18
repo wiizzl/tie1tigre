@@ -6,7 +6,9 @@ import Game from "./components/Game";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <div className="fixed inset-0">
-      <h1 className="top-2 left-2">tié1tigre.</h1>
+      <div className="absolute top-4 left-6">
+        <h1 className="text-2xl font-bold">tié1tigre.</h1>
+      </div>
       <Game />
     </div>
   </StrictMode>
